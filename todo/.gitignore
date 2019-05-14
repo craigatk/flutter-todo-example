@@ -8,6 +8,7 @@
 .buildlog/
 .history
 .svn/
+adb_install.sh
 
 # IntelliJ related
 *.iml
