@@ -6,6 +6,10 @@ class TodoModel extends Model {
   String _title;
   bool _complete;
 
+  int get id => _id;
+  String get title => _title;
+  bool get complete => _complete;
+
   TodoModel(
     this._id,
     this._title,
@@ -18,4 +22,10 @@ class TodoModel extends Model {
           todoRecord.title,
           todoRecord.complete,
         );
+
+  void toggleComplete() {
+    this._complete = !this._complete;
+
+    notifyListeners();
+  }
 }

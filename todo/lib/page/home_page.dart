@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:todo/model/app_model.dart';
 import 'package:todo/page/add_todo_page.dart';
+import 'package:todo/page/todo_list.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -13,7 +14,7 @@ class HomePage extends StatelessWidget {
               title: Text("TODO Sample"),
             ),
             body: Center(
-              child: Text("Home page"),
+              child: TodoList(),
             ),
             floatingActionButton: FloatingActionButton(
               key: Key('go_to_add_todo_button'),
