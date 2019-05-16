@@ -22,7 +22,7 @@ class DBProvider {
 
   Future<SqfliteAdapter> _initDB() async {
     String databasesPath = await getDatabasesPath();
-    String path = join(databasesPath, "TodoDB.db");
+    String path = join(databasesPath, "todo_database.db");
     return SqfliteAdapter(path);
   }
 }

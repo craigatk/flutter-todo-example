@@ -24,6 +24,8 @@ class TestDataHandler {
       return _handleInsertTodo(message);
     } else if (message.startsWith("find_todo_by_title")) {
       return _handleFindTodoByTitle(message);
+    } else if (message == "truncate_tables") {
+      return _handleTruncateTables();
     } else {
       return "invalid message $message";
     }
@@ -51,7 +53,7 @@ class TestDataHandler {
     await app.appModel.loadDataFromDB();
   }
 
-  Future<String> handleTruncateTables() async {
+  Future<String> _handleTruncateTables() async {
     await this._todoRecordBean.removeAll();
 
     await _reloadAppData();

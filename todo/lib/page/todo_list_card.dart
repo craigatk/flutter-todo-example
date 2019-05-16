@@ -16,6 +16,9 @@ class TodoListCard extends StatelessWidget {
                 children: [
                   Checkbox(
                     value: model.complete,
+                    key: Key(model.complete
+                        ? "todo_list_item_complete_${model.id}"
+                        : "todo_list_item_not_complete_${model.id}"),
                   ),
                   Text(
                     "${model.title}",

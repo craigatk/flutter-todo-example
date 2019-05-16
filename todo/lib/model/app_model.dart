@@ -8,7 +8,11 @@ class AppModel extends Model {
 
   TodoRecordBean _todoRecordBean;
 
+  bool _loaded = false;
+
   List<TodoModel> get todos => _todos;
+
+  bool get loaded => _loaded;
 
   AppModel.empty();
 
@@ -20,7 +24,7 @@ class AppModel extends Model {
     final currentVersion = await adapter.connection.getVersion();
 
     if (currentVersion == null || currentVersion == 0) {
-      this._todoRecordBean.createTable();
+      await this._todoRecordBean.createTable();
       await adapter.connection.setVersion(1);
     }
 
@@ -39,8 +43,11 @@ class AppModel extends Model {
     this._todos = allRecords
         .map((todoRecord) => TodoModel.fromRecord(
               todoRecord,
+              _todoRecordBean,
             ))
         .toList();
+
+    this._loaded = true;
 
     notifyListeners();
   }
@@ -54,9 +61,12 @@ class AppModel extends Model {
     this._todos.add(
           TodoModel.fromRecord(
             record,
+            this._todoRecordBean,
           ),
         );
+
     notifyListeners();
+
     return id;
   }
 }

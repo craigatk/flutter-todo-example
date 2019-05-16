@@ -20,8 +20,17 @@ void main() {
     });
 
     setUp(() async {
-      await dataDriver.truncateTables();
       await homePage.waitToLoad();
+    });
+
+    tearDown(() async {
+      await dataDriver.truncateTables();
+    });
+
+    tearDownAll(() async {
+      if (driver != null) {
+        await driver.close();
+      }
     });
 
     test('can view todos on home page', () async {
@@ -38,7 +47,7 @@ void main() {
     });
 
     test('can add todo', () async {
-      final title = "Here is a new item to complete";
+      final title = "Here is a newtodo item to complete";
 
       final addTodoPage = await homePage.goToAddTodoPage();
 
@@ -51,12 +60,25 @@ void main() {
       expect(todoRecord.title, title);
     });
 
-    // Close the connection to the driver after the tests have completed
-    tearDownAll(() async {
-      if (driver != null) {
-        await dataDriver.truncateTables();
-        await driver.close();
-      }
+    test('can toggle whether a is complete', () async {
+      final title = "Todo to complete";
+      final todoId = await dataDriver.insertTodo(TodoRecord.make(title, false));
+
+      await homePage.waitForTodoMarkedNotComplete(todoId);
+
+      await homePage.toggleTodoComplete(todoId);
+
+      await homePage.waitForTodoMarkedComplete(todoId);
+
+      final todoRecordShouldBeComplete = await dataDriver.findTodoByTitle(title);
+      expect(todoRecordShouldBeComplete.complete, true);
+
+      await homePage.toggleTodoComplete(todoId);
+
+      await homePage.waitForTodoMarkedNotComplete(todoId);
+
+      final todoRecordShouldNotBeComplete = await dataDriver.findTodoByTitle(title);
+      expect(todoRecordShouldNotBeComplete.complete, false);
     });
   });
 }

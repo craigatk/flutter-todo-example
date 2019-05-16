@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScopedModelDescendant<AppModel>(
       builder: (context, child, model) => Scaffold(
-            key: Key('home_page'),
+            key: Key(model.loaded ? 'home_page_loaded' : 'home_page_loading'),
             appBar: AppBar(
               title: Text("TODO Sample"),
             ),
