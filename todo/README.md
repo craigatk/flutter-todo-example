@@ -1,16 +1,22 @@
-# todo
+# Sample Todo app
 
-A new Flutter project.
+This is a sample Todo app demonstrating some of the basics of Flutter.
 
-## Getting Started
+## Technology
 
-This project is a starting point for a Flutter application.
+* Flutter
+* SqlLite database
+* [Scoped Model](https://medium.com/flutter-community/flutter-app-architecture-101-vanilla-scoped-model-bloc-7eff7b2baf7e) for state management
+* [Jaguar ORM](https://github.com/Jaguar-dart/jaguar_orm) for database access
+* Some unit tests
+* Flutter driver integration tests
 
-A few resources to get you started if this is your first Flutter project:
+## Driver tests
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
+This app includes [driver tests](https://flutter.dev/docs/cookbook/testing/integration/introduction)
+that drive user-level tests again the app installed on an Android emulator. This allows
+more thorough verification of the app's features, including storing/retrieving data from the app's
+SqlLite database.
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+To run the driver tests, either execute the `driver.sh` shell script or run `flutter drive --target=test_driver/app.dart`
+
