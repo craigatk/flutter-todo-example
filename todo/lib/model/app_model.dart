@@ -12,7 +12,11 @@ class AppModel extends Model {
 
   List<TodoModel> get todos => _todos;
 
+  List<TodoModel> get sortedTodos => _todos.toList()..sort((a, b) => a.compareTo(b));
+
   bool get loaded => _loaded;
+
+  AppModel(this._todoRecordBean);
 
   AppModel.empty();
 
@@ -68,5 +72,11 @@ class AppModel extends Model {
     notifyListeners();
 
     return id;
+  }
+
+  void toggleComplete(int todoId) {
+    this._todos.where((todo) => todo.id == todoId).first.toggleComplete();
+
+    notifyListeners();
   }
 }

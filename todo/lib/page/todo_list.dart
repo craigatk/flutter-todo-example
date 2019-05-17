@@ -11,26 +11,30 @@ class TodoList extends StatelessWidget {
       builder: (context, child, model) => ListView(
             key: Key('todo_list'),
             shrinkWrap: true,
-            children: model.todos
-                .map((todo) => ScopedModel(
-                      model: todo,
-                      child: TodoListItem(),
-                    ))
-                .toList(),
+            children: model.sortedTodos.map((todo) => TodoListItem(model, todo)).toList(),
           ),
     );
   }
 }
 
 class TodoListItem extends StatelessWidget {
+  final AppModel _appModel;
+  final TodoModel _todoModel;
+
+  TodoListItem(
+    this._appModel,
+    this._todoModel,
+  );
+
   @override
   Widget build(BuildContext context) {
-    return ScopedModelDescendant<TodoModel>(
-      builder: (context, child, model) => InkWell(
-            key: Key("todo_list_item_well_${model.id}"),
-            onTap: () => model.toggleComplete(),
-            child: TodoListCard(),
-          ),
+    return InkWell(
+      key: Key("todo_list_item_well_${this._todoModel.id}"),
+      onTap: () => this._appModel.toggleComplete(this._todoModel.id),
+      child: ScopedModel(
+        model: this._todoModel,
+        child: TodoListCard(),
+      ),
     );
   }
 }

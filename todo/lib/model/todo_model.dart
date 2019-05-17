@@ -38,4 +38,14 @@ class TodoModel extends Model {
 
     notifyListeners();
   }
+
+  int compareTo(TodoModel b) {
+    if (this.complete && !b.complete) {
+      return 1;
+    } else if (!this.complete && b.complete) {
+      return -1;
+    } else {
+      return this.id.compareTo(b.id);
+    }
+  }
 }
