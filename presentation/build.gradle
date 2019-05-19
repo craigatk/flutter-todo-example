@@ -1,0 +1,43 @@
+plugins {
+    id "org.asciidoctor.jvm.revealjs" version "2.2.0"
+}
+
+repositories {
+    jcenter()
+    maven {
+        url "http://rubygems-proxy.torquebox.org/releases"
+        content { includeGroupByRegex 'rubygems' }
+    }
+}
+
+asciidoctorj {
+    version '1.6.2'
+    diagramVersion '1.5.16'
+    safeMode 'unsafe'
+    fatalWarnings missingIncludes()
+    attributes pluginVersion: '2.2.0'
+}
+
+asciidoctorRevealJs {
+    theme 'white'
+    sourceDir 'src/docs/asciidoc'
+    sources {
+        include 'index.adoc'
+    }
+    resources {
+        from sourceDir, {
+            include 'images/**'
+        }
+    }
+    revealjsOptions {
+        controls = true
+        slideNumber = 'c'
+        transition = 'none'
+        pushToHistory = true
+    }
+}
+
+asciidoctorRevealJs.inputs.dir('src/docs/asciidoc')
+asciidoctorRevealJs.outputs.dir("$buildDir/docs")
+
+build.dependsOn asciidoctorRevealJs
