@@ -12,10 +12,14 @@ repositories {
 
 asciidoctorj {
     version '1.6.2'
-    diagramVersion '1.5.16'
     safeMode 'unsafe'
     fatalWarnings missingIncludes()
     attributes pluginVersion: '2.2.0'
+    modules {
+        diagram {
+            version '1.5.16'
+        }
+    }
 }
 
 asciidoctorRevealJs {
