@@ -22,6 +22,7 @@ asciidoctorj {
     }
 }
 
+// https://github.com/asciidoctor/asciidoctor-gradle-plugin#the-asciidoctorj-revealjs-plugin
 asciidoctorRevealJs {
     theme 'white'
     sourceDir 'src/docs/asciidoc'
