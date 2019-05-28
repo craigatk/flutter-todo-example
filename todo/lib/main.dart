@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         builder: (context, child, model) => MaterialApp(
           title: 'TODO',
           theme: new ThemeData(
-            primarySwatch: Colors.blue,
+            primarySwatch: Colors.teal,
           ),
           home: HomePage(),
         ),

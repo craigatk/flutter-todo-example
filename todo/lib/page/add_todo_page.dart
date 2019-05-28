@@ -11,6 +11,7 @@ class AddTodoPage extends StatefulWidget {
 
 class AddTodoPageState extends State<AddTodoPage> {
   final TextEditingController _titleController = TextEditingController();
+  final _buttonTextStyle = const TextStyle(fontSize: 18.0);
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +25,14 @@ class AddTodoPageState extends State<AddTodoPage> {
         child: ScopedModelDescendant<AppModel>(
           builder: (context, child, model) {
             return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 TextField(
                   key: Key('todo_title_input'),
                   decoration: InputDecoration(labelText: 'Todo title'),
                   controller: _titleController,
                 ),
-                RaisedButton(
+                MaterialButton(
                   key: Key('add_todo_button'),
                   onPressed: () {
                     model.addTodo(
@@ -39,7 +40,14 @@ class AddTodoPageState extends State<AddTodoPage> {
                     );
                     Navigator.pop(context);
                   },
-                  child: Text('Add Goal'),
+                  child: Text(
+                    'Add',
+                    style: _buttonTextStyle,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.teal),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
                 ),
               ],
             );
