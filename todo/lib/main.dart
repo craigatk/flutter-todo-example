@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       model: appModel,
       child: ScopedModelDescendant<AppModel>(
         builder: (context, child, model) => MaterialApp(
-          title: 'TODO',
+          title: 'To-Do Sample App',
           theme: new ThemeData(
             primarySwatch: Colors.teal,
           ),

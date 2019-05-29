@@ -11,9 +11,10 @@ class HomePage extends StatelessWidget {
       builder: (context, child, model) => Scaffold(
             key: Key(model.loaded ? 'home_page_loaded' : 'home_page_loading'),
             appBar: AppBar(
-              title: Text("TODO Sample"),
+              title: Text("To-Do Sample App"),
             ),
-            body: Center(
+            body: Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.0),
               child: TodoList(),
             ),
             floatingActionButton: FloatingActionButton(

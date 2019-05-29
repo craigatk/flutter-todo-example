@@ -11,14 +11,14 @@ class AddTodoPage extends StatefulWidget {
 
 class AddTodoPageState extends State<AddTodoPage> {
   final TextEditingController _titleController = TextEditingController();
-  final _buttonTextStyle = const TextStyle(fontSize: 18.0);
+  final _buttonTextStyle = const TextStyle(fontSize: 20.0);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         key: Key('add_todo_page'),
-        title: Text("Add New Todo"),
+        title: Text("Add New To-Do"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(18.0),
@@ -32,21 +32,25 @@ class AddTodoPageState extends State<AddTodoPage> {
                   decoration: InputDecoration(labelText: 'Todo title'),
                   controller: _titleController,
                 ),
-                MaterialButton(
-                  key: Key('add_todo_button'),
-                  onPressed: () {
-                    model.addTodo(
-                      _titleController.text,
-                    );
-                    Navigator.pop(context);
-                  },
-                  child: Text(
-                    'Add',
-                    style: _buttonTextStyle,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(color: Colors.teal),
-                    borderRadius: BorderRadius.circular(10.0),
+                Padding(
+                  padding: EdgeInsets.only(top: 15.0),
+                  child: MaterialButton(
+                    key: Key('add_todo_button'),
+                    onPressed: () {
+                      model.addTodo(
+                        _titleController.text,
+                      );
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      'Add',
+                      style: _buttonTextStyle,
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 40.0),
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.teal, width: 3.0),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
                   ),
                 ),
               ],

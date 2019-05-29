@@ -1,5 +1,6 @@
 import 'package:scoped_model/scoped_model.dart';
 import 'package:todo/database/database.dart';
+import 'package:todo/database/database_migrator.dart';
 import 'package:todo/database/todo_record.dart';
 import 'package:todo/model/todo_model.dart';
 
@@ -25,12 +26,7 @@ class AppModel extends Model {
 
     this._todoRecordBean = TodoRecordBean(adapter);
 
-    final currentVersion = await adapter.connection.getVersion();
-
-    if (currentVersion == null || currentVersion == 0) {
-      await this._todoRecordBean.createTable();
-      await adapter.connection.setVersion(1);
-    }
+    await DatabaseMigrator(adapter, _todoRecordBean).migrate();
 
     if (shouldLoadSampleData) {
       await this._loadSampleData();
@@ -75,7 +71,7 @@ class AppModel extends Model {
   }
 
   void toggleComplete(int todoId) {
-    this._todos.where((todo) => todo.id == todoId).first.toggleComplete();
+    this._todos.firstWhere((todo) => todo.id == todoId).toggleComplete();
 
     notifyListeners();
   }

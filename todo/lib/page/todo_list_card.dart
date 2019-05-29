@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:todo/model/app_model.dart';
 import 'package:todo/model/todo_model.dart';
 
 class TodoListCard extends StatelessWidget {
   final _titleStyle = const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold);
-  final _itemPadding = const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0);
+  final _itemPadding = const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0);
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +20,16 @@ class TodoListCard extends StatelessWidget {
                     key: Key(model.complete
                         ? "todo_list_item_complete_${model.id}"
                         : "todo_list_item_not_complete_${model.id}"),
+                    onChanged: (newValue) =>
+                        ScopedModel.of<AppModel>(context).toggleComplete(model.id),
                   ),
-                  Text(
-                    "${model.title}",
-                    key: Key("todo_list_item_title_${model.id}"),
-                    style: _titleStyle,
+                  Padding(
+                    padding: EdgeInsets.only(left: 10.0),
+                    child: Text(
+                      "${model.title}",
+                      key: Key("todo_list_item_title_${model.id}"),
+                      style: _titleStyle,
+                    ),
                   ),
                 ],
               ),
