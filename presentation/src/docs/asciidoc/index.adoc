@@ -3,7 +3,46 @@
 == Agenda
 [%step]
 
-* Topic 1
-* Topic 2
+* Flutter background
+* Building an app
+* Persisting data
+* Testing
+* Q & A
 
-== Another slide
+== What is Flutter?
+[%step]
+
+* Full-featured cross-platform mobile app development framework
+* Open source, developed by Google
+* 1.0 release December 2018
+
+== How is Flutter different?
+[%step]
+
+* Compiles directly to native ARM code
+* No JavaScript bridge, no interface to native components
+* Renders its own widgets, much like games do
+
+== Widgets
+[%step]
+
+* Many built-in widgets for common app components
+* Flutter itself ships with tons of widgets
+* No need to piece together many third-party components
+
+== Developer experience
+[%step]
+
+* Hot-reloading of changes during development
+* Testing support built-in for unit, widget, and functional tests
+* Thorough documentation on website and in framework code
+
+== Beyond mobile
+[%step]
+
+* Google recently announced support for building desktop and web apps with Flutter
+* Desktop apps for MacOS, Linux, Windows, and ChromeOS
+
+== Resouces
+
+* https://medium.com/flutter-community/flutter-for-desktop-create-and-run-a-desktop-application-ebeb1604f1e0[Desktop apps tutorial]
