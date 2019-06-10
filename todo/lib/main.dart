@@ -8,9 +8,7 @@ final appModel = AppModel.empty();
 void main({bool shouldLoadSampleData = false}) {
   appModel.initDB(shouldLoadSampleData);
 
-  runApp(MyApp(
-      appModel: appModel
-  ));
+  runApp(MyApp(appModel: appModel));
 }
 
 class MyApp extends StatelessWidget {
@@ -24,13 +22,14 @@ class MyApp extends StatelessWidget {
       model: appModel,
       child: ScopedModelDescendant<AppModel>(
         builder: (context, child, model) => MaterialApp(
-          title: 'To-Do Sample App',
-          theme: new ThemeData(
-            primarySwatch: Colors.teal,
-          ),
-          home: HomePage(),
-        ),
+              title: 'To-Do Sample App',
+              theme: new ThemeData(
+                primarySwatch: Colors.teal,
+              ),
+              home: HomePage(),
+              debugShowCheckedModeBanner: false,
+            ),
       ),
     );
-  }}
-
+  }
+}
