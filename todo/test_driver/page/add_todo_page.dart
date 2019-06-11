@@ -19,4 +19,10 @@ class AddTodoPage extends BasePage {
 
     return homePage;
   }
+
+  Future<void> clickAddTodoButtonFailure() async {
+    await driver.tap(find.byValueKey('add_todo_button'));
+
+    await waitToLoad();
+  }
 }

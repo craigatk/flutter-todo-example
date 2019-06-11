@@ -12,7 +12,7 @@ class DataDriver {
 
   Future<TodoRecord> findTodoByTitle(String title) async {
     final recordJson = await _driver.requestData("find_todo_by_title%%$title");
-    return TodoRecord.fromJson(json.decode(recordJson));
+    return recordJson != "not_found" ? TodoRecord.fromJson(json.decode(recordJson)) : null;
   }
 
   Future<String> insertTodo(TodoRecord record) async {

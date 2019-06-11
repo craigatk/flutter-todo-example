@@ -80,5 +80,17 @@ void main() {
       final todoRecordShouldNotBeComplete = await dataDriver.findTodoByTitle(title);
       expect(todoRecordShouldNotBeComplete.complete, false);
     });
+
+    test('when adding todo the title must not be empty', () async {
+      final addTodoPage = await homePage.goToAddTodoPage();
+
+      await addTodoPage.clickAddTodoButtonFailure();
+
+      final todoRecord = await dataDriver.findTodoByTitle("");
+
+      expect(todoRecord, null);
+
+      await driver.tap(find.pageBack());
+    });
   });
 }

@@ -46,7 +46,7 @@ class TestDataHandler {
     String title = message.split("%%").last;
     final record = await _todoRecordBean.findOneWhere(_todoRecordBean.title.eq(title));
 
-    return record != null ? json.encode(record) : "todo_not_found";
+    return record != null ? json.encode(record) : "not_found";
   }
 
   Future<void> _reloadAppData() async {
