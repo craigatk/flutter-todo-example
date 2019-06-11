@@ -51,6 +51,10 @@ void main() {
       await dataDriver.insertTodo(TodoRecord.make("Water garden", false));
 
       await _takeScreenshot("screenshots/android/home_screen.png");
+
+      await homePage.goToAddTodoPage();
+
+      await _takeScreenshot("screenshots/android/add_to_do_screen.png");
     });
 
   });
