@@ -37,12 +37,28 @@
 * Testing support built-in for unit, widget, and functional tests
 * Thorough documentation on website and in framework code
 
+
+== State management
+[%step]
+
+* https://medium.com/flutter-community/flutter-app-architecture-101-vanilla-scoped-model-bloc-7eff7b2baf7e[Mutliple options for managing state]
+* No library - just pass around variables
+* https://pub.dev/packages/scoped_model[Scoped Model]
+* https://blog.novoda.com/introduction-to-redux-in-flutter/[Redux]
+* BLoC (Business Logic Components)
+
+== Persistence
+[%step]
+
+* 
+
 == Beyond mobile
 [%step]
 
 * Google recently announced support for building desktop and web apps with Flutter
-* Desktop apps for MacOS, Linux, Windows, and ChromeOS
+* https://medium.com/flutter-community/flutter-for-desktop-create-and-run-a-desktop-application-ebeb1604f1e0[Desktop apps] for MacOS, Linux, Windows, and ChromeOS
 
 == Resouces
 
-* https://medium.com/flutter-community/flutter-for-desktop-create-and-run-a-desktop-application-ebeb1604f1e0[Desktop apps tutorial]
+* https://flutter.dev/docs/get-started/codelab[Lab for writing your first Flutter app]
+* https://flutter.dev/docs[Flutter docs]
